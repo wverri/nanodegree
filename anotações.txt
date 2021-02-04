@@ -1,0 +1,24 @@
+Supervised
+- Read an label data and based on the labeled datas read it categoraze another datas with labels.
+-- Classificaion
+	Categorical Outcomes
+
+-- Regression
+	Numeric Outcomes
+
+Unsupervised
+- Creates a label for the data without label to use as base
+
+
+Reinforcement Learning
+- Takes an action and receive rewards for those actions
+
+Absolute Trick
+y = w_1x (+x*a) + w_2 (+a)
+
+square trick
+y = w_1x (+x*a*y) + w_2 (+a*y)
+(-5,3) || y = -0.6x + 4 || q = 7, q' = 3 (q - q') = 4
+y = -0.6x + (5*0,01*4) + 4 + (-0,01*4)
+y = -0.6x + (-0,2) + 4,04
+y = -0.4x + 3.96
