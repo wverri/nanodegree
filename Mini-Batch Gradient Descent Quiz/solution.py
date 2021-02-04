@@ -2,7 +2,7 @@ def MSEStep(X, y, W, b, learn_rate = 0.001):
     """
     This function implements the gradient descent step for squared error as a
     performance metric.
-    
+
     Parameters
     X : array of predictor features
     y : array of outcome values
@@ -14,11 +14,11 @@ def MSEStep(X, y, W, b, learn_rate = 0.001):
     W_new : predictor feature coefficients following gradient descent step
     b_new : intercept following gradient descent step
     """
-    
+
     # compute errors
     y_pred = np.matmul(X, W) + b
     error = y - y_pred
-    
+
     # compute steps
     W_new = W + learn_rate * np.matmul(error, X)
     b_new = b + learn_rate * error.sum()
