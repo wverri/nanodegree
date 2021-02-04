@@ -10,7 +10,7 @@ def MSEStep(X, y, W, b, learn_rate = 0.005):
     """
     This function implements the gradient descent step for squared error as a
     performance metric.
-    
+
     Parameters
     X : array of predictor features
     y : array of outcome values
@@ -22,9 +22,15 @@ def MSEStep(X, y, W, b, learn_rate = 0.005):
     W_new : predictor feature coefficients following gradient descent step
     b_new : intercept following gradient descent step
     """
-    
+    W_new = []
+    b_new = []
     # Fill in code
-    
+    y_pred = np.matmul(X, W) + b
+    error = y - y_pred
+
+    # compute steps
+    W_new = W + learn_rate * np.matmul(error, X)
+    b_new = b + learn_rate * error.sum()
     return W_new, b_new
 
 
@@ -50,7 +56,7 @@ def miniBatchGD(X, y, batch_size = 20, learn_rate = 0.005, num_iter = 25):
     n_points = X.shape[0]
     W = np.zeros(X.shape[1]) # coefficients
     b = 0 # intercept
-    
+
     # run iterations
     regression_coef = [np.hstack((W,b))]
     for _ in range(num_iter):
@@ -59,7 +65,7 @@ def miniBatchGD(X, y, batch_size = 20, learn_rate = 0.005, num_iter = 25):
         y_batch = y[batch]
         W, b = MSEStep(X_batch, y_batch, W, b, learn_rate)
         regression_coef.append(np.hstack((W,b)))
-    
+
     return regression_coef
 
 
@@ -69,10 +75,10 @@ if __name__ == "__main__":
     X = data[:,:-1]
     y = data[:,-1]
     regression_coef = miniBatchGD(X, y)
-    
+
     # plot the results
     import matplotlib.pyplot as plt
-    
+
     plt.figure()
     X_min = X.min()
     X_max = X.max()
